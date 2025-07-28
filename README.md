@@ -1,4 +1,4 @@
-````markdown
+
 # 📇 MERN Contact App with Prometheus + Grafana Monitoring
 
 This project is a simple **MERN stack** (MongoDB, Express, React, Node.js) contact management app, containerized using **Docker Compose**, with integrated monitoring using **Prometheus** and **Grafana**.
