@@ -2,7 +2,8 @@ pipeline {
     agent any
 
     environment {
-        DOCKER_IMAGE = 'shubhamshrestha/contact-keeper'
+        FRONTEND_IMAGE = 'shubhamshrestha/contact-frontend'
+        BACKEND_IMAGE = 'shubhamshrestha/contact-backend'
     }
 
     stages {
@@ -12,10 +13,11 @@ pipeline {
             }
         }
 
-        stage('Build Docker Image') {
+        stage('Build Docker Images') {
             steps {
                 script {
-                    sh 'docker build -t $DOCKER_IMAGE .'
+                    sh 'docker build -t $FRONTEND_IMAGE ./frontend'
+                    sh 'docker build -t $BACKEND_IMAGE ./backend'
                 }
             }
         }
@@ -28,10 +30,11 @@ pipeline {
             }
         }
 
-        stage('Push to Docker Hub') {
+        stage('Push Docker Images') {
             steps {
                 script {
-                    sh 'docker push $DOCKER_IMAGE'
+                    sh 'docker push $FRONTEND_IMAGE'
+                    sh 'docker push $BACKEND_IMAGE'
                 }
             }
         }
